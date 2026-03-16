@@ -1,22 +1,23 @@
-cd D:\DevOps\ProjetosDocker\projeto-2
+cd D:\DevOps\ProjetosDocker\projeto-3
 
-# 1. Build da nova imagem com as bibliotecas
-docker build -t image-2 .
+Criar um container com as configurações do docker-compose.yml
+docker-compose up -d
 
-# 2. Execução do novo container (Note o nome e a imagem novos)
-docker run -d --name container-2 -v "${PWD}:/app" image-2
+Deletar o container criado anteriormente
+docker-compose down -v
+
+
+# O '--build' força o Docker a ler o Dockerfile de novo e instalar o psycopg2
+docker-compose up -d --build
+
+Entre no container e rode o app:
+docker exec -it app-ia streamlit run app.py
 
 
 Abrir o vscode dentro do container
 Dentro do vscode (Windows) F1 > Dev Containers: Attach to Running Container> 
 Seleciona o "container"
 dentro do vscode (Container) Abra pasta > e procure a pasta "App"
-
-docker ps -a
-docker images
-docker start container-2
-docker exec -it container-2 python main.py
-docker exec -it container-2 streamlit run app.py
 
 
 navegar "dentro" do container pelo "Shell"
@@ -39,27 +40,23 @@ pwd: Mostra exatamente em qual pasta você está.
 exit: Sai do container e volta para o Windows.
 
 
+Crie um repositorio no git primeiro
 
-git init 
+# 1. Inicializa o Git
+git init
 
-# Primeiro, remova qualquer 'origin' que exista para não dar erro
-git remote remove origin
-
-# Agora, cole o link que você copiou (Botão direito do mouse cola no terminal)
-git remote add origin git@github.com:SEU_NOME_DE_USUARIO/NOME_DO_REPO.git
-git remote add origin git@github.com:BrunoKaram/projeto-2.git
-
-
-
-# 1. Verifique o status das mudanças
-git status
-
-# 2. Adicione os novos arquivos (Dockerfile atualizado, app.py, main.py)
+# 2. Adiciona todos os arquivos (O .gitignore vai barrar o .env automaticamente)
 git add .
 
-# 3. Crie o commit com uma mensagem clara
-git commit -m "Upgrade: Adicionada interface Streamlit e conexão com Groq"
+# 3. Cria o primeiro commit
+git commit -m "Projeto 3: App IA com Postgres e Docker Compose"
 
-# 4. Envie para o GitHub
-git push origin main
+# 4. Renomeia a branch para main (padrão atual)
+git branch -M main
+
+# 5. Adiciona o endereço remoto (Ajuste para o seu link SSH)
+git remote add origin git@github.com:BrunoKaram/ai-chat-docker-orchestration.git
+
+# 6. Envia para o GitHub
+git push -u origin main
 
