@@ -1,0 +1,65 @@
+cd D:\DevOps\ProjetosDocker\projeto-2
+
+# 1. Build da nova imagem com as bibliotecas
+docker build -t image-2 .
+
+# 2. Execução do novo container (Note o nome e a imagem novos)
+docker run -d --name container-2 -v "${PWD}:/app" image-2
+
+
+Abrir o vscode dentro do container
+Dentro do vscode (Windows) F1 > Dev Containers: Attach to Running Container> 
+Seleciona o "container"
+dentro do vscode (Container) Abra pasta > e procure a pasta "App"
+
+docker ps -a
+docker images
+docker start container-2
+docker exec -it container-2 python main.py
+docker exec -it container-2 streamlit run app.py
+
+
+navegar "dentro" do container pelo "Shell"
+docker exec -it container-2 bash
+
+-it: É o que permite a interatividade (seu teclado conectado ao Linux).
+
+bash: É o nome do "terminal" Linux.
+
+Uma vez lá dentro, o seu prompt vai mudar (ex: root@id-do-container:/app#). Agora você pode usar os comandos de navegação:
+
+ls: Lista os arquivos da pasta atual.
+
+cd /: Vai para a raiz do sistema Linux.
+
+cd /app: Volta para a pasta onde está seu projeto.
+
+pwd: Mostra exatamente em qual pasta você está.
+
+exit: Sai do container e volta para o Windows.
+
+
+
+git init 
+
+# Primeiro, remova qualquer 'origin' que exista para não dar erro
+git remote remove origin
+
+# Agora, cole o link que você copiou (Botão direito do mouse cola no terminal)
+git remote add origin git@github.com:SEU_NOME_DE_USUARIO/NOME_DO_REPO.git
+git remote add origin git@github.com:BrunoKaram/projeto-2.git
+
+
+
+# 1. Verifique o status das mudanças
+git status
+
+# 2. Adicione os novos arquivos (Dockerfile atualizado, app.py, main.py)
+git add .
+
+# 3. Crie o commit com uma mensagem clara
+git commit -m "Upgrade: Adicionada interface Streamlit e conexão com Groq"
+
+# 4. Envie para o GitHub
+git push origin main
+
