@@ -1,4 +1,4 @@
-cd D:\DevOps\ProjetosDocker\projeto-3
+cd D:\DevOps\ProjetosDocker\ai-chat-docker-orchestration
 
 Criar um container com as configurações do docker-compose.yml
 docker-compose up -d
@@ -49,7 +49,7 @@ git init
 git add .
 
 # 3. Cria o primeiro commit
-git commit -m "Projeto 3: App IA com Postgres e Docker Compose"
+git commit -m "ai-chat-docker-orchestration: App IA com Postgres e Docker Compose"
 
 # 4. Renomeia a branch para main (padrão atual)
 git branch -M main
