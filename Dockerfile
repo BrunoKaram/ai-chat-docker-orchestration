@@ -4,7 +4,7 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
 # Adicionamos o streamlit aqui
-RUN pip install --no-cache-dir groq python-dotenv streamlit psycopg2-binary
+RUN pip install --no-cache-dir groq python-dotenv streamlit psycopg2-binary requests
 
 # O Streamlit usa a porta 8501 por padrão
 EXPOSE 8501
