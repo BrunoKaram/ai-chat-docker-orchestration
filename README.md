@@ -63,6 +63,11 @@ Gerenciador de Banco (Adminer): http://localhost:8080
 O projeto utiliza um esquema relacional para garantir a integridade dos logs e do catálogo.
 Execute o script abaixo no seu cliente SQL (como o Adminer em localhost:8080):
 
+````markdown
+<details>
+  <summary>📂 Clique para ver o Script SQL Completo</summary>
+
+```sql
 -- 1. Tabela de Provedores
 CREATE TABLE IF NOT EXISTS provedores (
 id SERIAL PRIMARY KEY,
@@ -93,3 +98,5 @@ data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 -- Inserção inicial
 INSERT INTO provedores (nome) VALUES ('GROQ'), ('OPENROUTER'), ('GITHUB')
 ON CONFLICT DO NOTHING;
+```
+````
