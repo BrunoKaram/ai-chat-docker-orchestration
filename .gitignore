@@ -1,4 +1,5 @@
 .env
+doc.txt
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
